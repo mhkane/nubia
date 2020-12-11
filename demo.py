@@ -7,16 +7,12 @@ nubia = Nubia()
 def predict(inp_1, inp_2):
     features = nubia.score(inp_1, inp_2, get_features=True)
     labels = {k: v for k, v in features["features"].items()}
-    friendly_keys = [
-    "Semantic Relationship (out 5.0)",
-    "Percentage logical agreement",
-    "Percentage irrelevancy or new information",
-    "Percentage Contradiction",
-    "Perplexity Hypothesis Sentence", 
-    "Perplexity Reference Sentence",
-    ]
+    feature_dict = {}
+    feature_dict["Semantic Relationship (out 5.0)"]=labels["semantic_relation"]
+    feature_dict["Percentage logical agreement"]=labels["logical_agreement"]
+    feature_dict["Percentage irrelevancy or new information"]= labels["irrelevancy"]
     labels = dict(zip(friendly_keys, list(labels.values()))) 
-    return {"nubia_score": features["nubia_score"]}, labels
+    return {"nubia_score": features["nubia_score"]}, feature_dict
 
 
 title = "NUBIA"
