@@ -18,7 +18,7 @@ def predict(inp_1, inp_2):
 title = "NUBIA"
 description = "NeUral Based Interchangeability Assessor. \n NUBIA gives a score on a scale of 0 to 1 reflecting how much it thinks the reference and candidate sentences are interchangeable"
 inputs = [gradio.inputs.Textbox(lines=5, label="Reference Text"), gradio.inputs.Textbox(lines=5, label="Candidate Text")]
-outputs = [gradio.outputs.Label(label="Interchangeability Score"), gradio.outputs.JSON(label="All Features")]
+outputs = [gradio.outputs.Label(label="Interchangeability Score"), gradio.outputs.JSON(label="Neural Features (Explanation)")]
 examples = [
     ["This car is expensive! I can't buy it.", "That automobile costs a fortune! Purchasing it? Impossible!"],
     ["This car is expensive! I can't buy it.", "That automobile costs a good amount. Purchasing it? Totally feasible!"],
