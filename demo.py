@@ -7,6 +7,16 @@ nubia = Nubia()
 def predict(inp_1, inp_2):
     features = nubia.score(inp_1, inp_2, get_features=True)
     labels = {k: v for k, v in features["features"].items()}
+    labels["Likelihood Contradiction"] = labels["contradiction"]
+    del labels["contradiction"]
+    labels["Likelihood logical agreeement"] = labels["logical_agreement"]
+    del labels["logical_agreement"]
+    labels["Likelihood different topics or new information"] = labels["irrelevancy"]
+    del labels["irrelevancy"]
+    labels["Semantic Similarity (out of 5.0)"] = labels["semantic_relation"]
+    del labels["semantic_relation"]
+    del labels["grammar_hyp"]
+    del labels["grammar_ref"]
     return {"nubia_score": features["nubia_score"]}, labels
 
 
